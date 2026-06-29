@@ -1,3 +1,40 @@
 spring:
   application:
     name: second-hand.product.moderation.platform
+
+  datasource:
+    url: jdbc:h2:file:./data/moderation;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+application:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:local-dev-secret-32chars!!!!!!!!}
+      expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
