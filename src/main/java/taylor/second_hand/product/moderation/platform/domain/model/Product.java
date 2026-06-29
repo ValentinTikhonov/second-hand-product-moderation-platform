@@ -1,6 +1,10 @@
 package taylor.second_hand.product.moderation.platform.domain.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import taylor.second_hand.product.moderation.platform.domain.enums.ProductCategory;
 import taylor.second_hand.product.moderation.platform.domain.enums.ProductCondition;
 import taylor.second_hand.product.moderation.platform.domain.enums.ProductSize;
@@ -12,7 +16,8 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     private String id;

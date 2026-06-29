@@ -1,6 +1,10 @@
 package taylor.second_hand.product.moderation.platform.domain.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import taylor.second_hand.product.moderation.platform.domain.enums.ProductEventType;
 
 import java.time.Instant;
@@ -9,7 +13,8 @@ import java.util.Map;
 @Getter
 @Setter
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductEvent {
 
     private String id;

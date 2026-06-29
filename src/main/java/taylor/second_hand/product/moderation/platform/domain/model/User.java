@@ -1,12 +1,17 @@
 package taylor.second_hand.product.moderation.platform.domain.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import taylor.second_hand.product.moderation.platform.domain.enums.UserRole;
 
 @Getter
 @Setter
 @Builder
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     private Long id;
