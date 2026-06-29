@@ -1,0 +1,163 @@
+{
+  "users": [
+    {
+      "id": 1001,
+      "username": "seller1",
+      "displayName": "Laura Seller",
+      "password": "password123",
+      "role": "SELLER",
+      "blocked": false
+    },
+    {
+      "id": 1002,
+      "username": "seller2",
+      "displayName": "Blocked Seller",
+      "password": "password123",
+      "role": "SELLER",
+      "blocked": true
+    },
+    {
+      "id": 501,
+      "username": "moderator1",
+      "displayName": "Moderator One",
+      "password": "password123",
+      "role": "MODERATOR"
+    },
+    {
+      "id": 502,
+      "username": "moderator2",
+      "displayName": "Moderator Two",
+      "password": "password123",
+      "role": "MODERATOR"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_001",
+      "sellerId": 1001,
+      "title": "Wool coat",
+      "description": "Used twice, excellent condition",
+      "category": "CLOTHING",
+      "size": "M",
+      "condition": "VERY_GOOD",
+      "state": "DRAFT",
+      "termsAccepted": true,
+      "price": {
+        "currency": "EUR",
+        "amount": 4599,
+        "exponent": 2
+      },
+      "imageUrls": [
+        "https://example.com/coat-1.jpg",
+        "https://example.com/coat-2.jpg",
+        "https://example.com/coat-3.jpg"
+      ]
+    },
+    {
+      "id": "prod_002",
+      "sellerId": 1001,
+      "title": "Leather crossbody bag",
+      "description": "Small black leather bag with minor signs of use",
+      "category": "BAGS",
+      "size": "ONE_SIZE",
+      "condition": "GOOD",
+      "state": "PENDING_REVIEW",
+      "termsAccepted": true,
+      "price": {
+        "currency": "EUR",
+        "amount": 8999,
+        "exponent": 2
+      },
+      "imageUrls": [
+        "https://example.com/bag-1.jpg",
+        "https://example.com/bag-2.jpg",
+        "https://example.com/bag-3.jpg"
+      ]
+    },
+    {
+      "id": "prod_003",
+      "sellerId": 1002,
+      "title": "Printed dress",
+      "description": "Printed midi dress in good condition",
+      "category": "CLOTHING",
+      "size": "S",
+      "condition": "GOOD",
+      "state": "IN_REVIEW",
+      "reviewerId": 501,
+      "termsAccepted": true,
+      "price": {
+        "currency": "EUR",
+        "amount": 2999,
+        "exponent": 2
+      },
+      "imageUrls": [
+        "https://example.com/dress-1.jpg",
+        "https://example.com/dress-2.jpg",
+        "https://example.com/dress-3.jpg"
+      ]
+    },
+    {
+      "id": "prod_004",
+      "sellerId": 1001,
+      "title": "Denim jacket",
+      "description": "Classic denim jacket",
+      "category": "CLOTHING",
+      "size": "L",
+      "condition": "VERY_GOOD",
+      "state": "ACTIVE",
+      "termsAccepted": true,
+      "price": {
+        "currency": "EUR",
+        "amount": 3999,
+        "exponent": 2
+      },
+      "imageUrls": [
+        "https://example.com/jacket-1.jpg",
+        "https://example.com/jacket-2.jpg",
+        "https://example.com/jacket-3.jpg"
+      ]
+    },
+    {
+      "id": "prod_005",
+      "sellerId": 1001,
+      "title": "Sold hoodie",
+      "description": "Cotton hoodie already sold",
+      "category": "CLOTHING",
+      "size": "M",
+      "condition": "ACCEPTABLE",
+      "state": "SOLD",
+      "termsAccepted": true,
+      "price": {
+        "currency": "EUR",
+        "amount": 1999,
+        "exponent": 2
+      },
+      "imageUrls": [
+        "https://example.com/hoodie-1.jpg",
+        "https://example.com/hoodie-2.jpg",
+        "https://example.com/hoodie-3.jpg"
+      ]
+    },
+    {
+      "id": "prod_006",
+      "sellerId": 1002,
+      "title": "Linen shirt",
+      "description": "Lightweight linen shirt in very good condition",
+      "category": "CLOTHING",
+      "size": "M",
+      "condition": "VERY_GOOD",
+      "state": "DRAFT",
+      "termsAccepted": true,
+      "price": {
+        "currency": "EUR",
+        "amount": 2499,
+        "exponent": 2
+      },
+      "imageUrls": [
+        "https://example.com/shirt-1.jpg",
+        "https://example.com/shirt-2.jpg",
+        "https://example.com/shirt-3.jpg"
+      ]
+    }
+  ]
+}
