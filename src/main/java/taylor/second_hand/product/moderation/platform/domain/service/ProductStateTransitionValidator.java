@@ -5,6 +5,7 @@ import taylor.second_hand.product.moderation.platform.domain.enums.UserRole;
 import taylor.second_hand.product.moderation.platform.domain.exception.InvalidStateTransitionException;
 
 import java.util.*;
+import java.util.Optional;
 
 import static taylor.second_hand.product.moderation.platform.domain.enums.ProductState.*;
 import static taylor.second_hand.product.moderation.platform.domain.enums.UserRole.*;
@@ -51,14 +52,12 @@ public class ProductStateTransitionValidator {
      * @throws InvalidStateTransitionException if the transition is unknown or the role is not permitted.
      */
     public void validate(ProductState current, ProductState target, UserRole actorRole) {
-        Map<ProductState, Set<UserRole>> targets = ALLOWED_TRANSITIONS.get(current);
+        Set<UserRole> permitted = Optional.ofNullable(ALLOWED_TRANSITIONS.get(current))
+                .map(targets -> targets.get(target))
+                .orElseThrow(() -> new InvalidStateTransitionException(current, target));
 
-        if (targets == null || !targets.containsKey(target)) {
-            throw new InvalidStateTransitionException(current, target);
-        }
-
-        if (!targets.get(target).contains(actorRole)) {
-            throw new InvalidStateTransitionException(current, target, actorRole);
-        }
+        Optional.of(permitted)
+                .filter(roles -> roles.contains(actorRole))
+                .orElseThrow(() -> new InvalidStateTransitionException(current, target, actorRole));
     }
 }

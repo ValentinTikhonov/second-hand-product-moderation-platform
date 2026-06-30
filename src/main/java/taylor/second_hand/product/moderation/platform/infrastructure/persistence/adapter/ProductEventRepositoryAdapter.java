@@ -14,6 +14,7 @@ import taylor.second_hand.product.moderation.platform.infrastructure.persistence
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Component
@@ -47,22 +48,30 @@ public class ProductEventRepositoryAdapter implements ProductEventRepository {
     }
 
     private String toJson(Map<String, String> metadata) {
-        if (metadata == null || metadata.isEmpty()) return null;
-        try {
-            return objectMapper.writeValueAsString(metadata);
-        } catch (JsonProcessingException e) {
-            log.warn("Failed to serialize event metadata", e);
-            return null;
-        }
+        return Optional.ofNullable(metadata)
+                .filter(m -> !m.isEmpty())
+                .map(m -> {
+                    try {
+                        return objectMapper.writeValueAsString(m);
+                    } catch (JsonProcessingException e) {
+                        log.warn("Failed to serialize event metadata", e);
+                        return null;
+                    }
+                })
+                .orElse(null);
     }
 
     private Map<String, String> fromJson(String json) {
-        if (json == null || json.isBlank()) return null;
-        try {
-            return objectMapper.readValue(json, new TypeReference<>() {});
-        } catch (JsonProcessingException e) {
-            log.warn("Failed to deserialize event metadata: {}", json, e);
-            return null;
-        }
+        return Optional.ofNullable(json)
+                .filter(s -> !s.isBlank())
+                .map(s -> {
+                    try {
+                        return objectMapper.readValue(s, new TypeReference<Map<String, String>>() {});
+                    } catch (JsonProcessingException e) {
+                        log.warn("Failed to deserialize event metadata: {}", s, e);
+                        return null;
+                    }
+                })
+                .orElse(null);
     }
 }
